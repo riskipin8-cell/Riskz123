@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Tampilan</title>
+  <style>
+    body { background:black; color:white; text-align:center; font-family:Arial,sans-serif; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; }
+    img { width:40vh; margin-bottom:20px; }
+    h1 { color:red; font-size:5vh; }
+    p { font-size:2vh; max-width:90vw; }
+    button { margin-top:20px; padding:10px 20px; font-size:2vh; border:none; border-radius:8px; background:red; color:white; cursor:pointer; }
+    button:hover { background:darkred; }
+  </style>
+</head>
+<body>
+  <img src="https://cdn-icons-png.flaticon.com/128/74/74842.png" alt="Logo">
+  <h1>HP ANDA TERKUNCI!!</h1>
+  <p>Kirim pesan untuk kembali normal email: <b>manusiagoa21@gmail.com</b></p>
+
+  <!-- Input file untuk pilih audio dari HP -->
+  <input type="file" id="fileInput" accept="audio/*">
+  <br><br>
+  <audio id="myAudio" controls></audio>
+
+  <!-- Tombol kontrol -->
+  <button onclick="playAudio()">▶ Putar / Jeda Audio</button>
+
+  <script>
+    var audio = document.getElementById("myAudio");
+    var fileInput = document.getElementById("fileInput");
+
+    // Saat pilih file dari HP
+    fileInput.addEventListener("change", function() {
+      var file = this.files[0];
+      if (file) {
+        audio.src = URL.createObjectURL(file);
+      }
+    });
+
+    // Tombol play / pause
+    function playAudio() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+</body>
+</html>
